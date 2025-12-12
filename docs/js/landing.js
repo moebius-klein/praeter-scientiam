@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const sigillum = document.getElementById("sigillum");
+    const sigillumWrapper = document.getElementById("sigillum-wrapper");
     const axiomBlock = document.getElementById("axiom-block");
 
     let activated = false;
@@ -10,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (activated) return;
         activated = true;
 
-        // Zoom to ~40%
-        sigillum.style.width = "40vw";
+        // Zoom via CSS-Klasse
+        sigillumWrapper.classList.add("zoom");
 
-        // Show Satz −1 + Possibilitas est
+        // Satz −1 + Possibilitas est einblenden
         setTimeout(() => {
             axiomBlock.classList.add("show");
         }, 400);

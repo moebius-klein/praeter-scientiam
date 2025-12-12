@@ -21,23 +21,58 @@
     pointer-events: none;
 }
 
-/* Sigillum */
-#sigillum {
-    width: 15vw;
-    max-width: 300px;
-    transition: transform 1.2s ease, width 1.2s ease, opacity 0.8s;
+/* Sigillum Wrapper: Größe, Puls, Zoom */
+/* Wrapper steuert NUR Zoom */
+#sigillum-wrapper {
+    width: 18vw;               /* Startgröße */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center center;
+    transition: transform 1.2s ease;
+}
 
-    /* Soft breathing */
+/* Puls-Schicht */
+#sigillum-pulse {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     animation: pulsare 6s ease-in-out infinite;
 }
 
+#sigillum-wrapper.zoom {
+    transform: scale(2.5);
+}
+
+/* Bild */
+#sigillum {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Zoomzustand nach Klick */
+#sigillum-wrapper.zoom {
+    transform: scale(2.5);
+}
+
+/* Sigillum-Bild füllt den Wrapper */
+#sigillum {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Puls-Animation */
 @keyframes pulsare {
     0%   { transform: scale(1.00); opacity: 1; }
     50%  { transform: scale(1.02); opacity: 0.92; }
     100% { transform: scale(1.00); opacity: 1; }
 }
 
-/* Axiom block (hidden at start) */
+/* Axiomblock (anfangs versteckt) */
 #axiom-block {
     margin-top: 4vh;
     text-align: center;
@@ -46,10 +81,10 @@
     transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
-/* Text styles */
+/* Textstile */
 #satz {
-    font-size: 2.2rem;
-    letter-spacing: 0.05rem;
+    font-size: 3rem;
+    letter-spacing: 0.15rem;
     margin-bottom: 1rem;
     color: var(--codex-gold);
 }
@@ -60,7 +95,7 @@
     color: var(--codex-gold-dim);
 }
 
-/* Activated */
+/* Aktiviert */
 #axiom-block.show {
     opacity: 1;
     transform: translateY(0px);
