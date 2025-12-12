@@ -17,7 +17,8 @@
 
 /* ===== FONTS ===== */
 body {
-    font-family: "Cinzel", serif;
+    /* If Cinzel can't be loaded, fall back to common serif faces */
+    font-family: "Cinzel", "Times New Roman", Times, serif;
     color: var(--codex-gold);
     background: radial-gradient(circle at center,
                 var(--purple-haze-2) 0%,

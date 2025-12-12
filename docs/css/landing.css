@@ -24,7 +24,8 @@
 /* Sigillum Wrapper: Größe, Puls, Zoom */
 /* Wrapper steuert NUR Zoom */
 #sigillum-wrapper {
-    width: 18vw;               /* Startgröße */
+    /* Startgröße: responsive, aber mit Grenzen */
+    width: clamp(180px, 18vw, 360px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,23 +47,14 @@
     transform: scale(2.5);
 }
 
-/* Bild */
-#sigillum {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Zoomzustand nach Klick */
-#sigillum-wrapper.zoom {
-    transform: scale(2.5);
-}
-
 /* Sigillum-Bild füllt den Wrapper */
 #sigillum {
     width: 100%;
     height: auto;
     display: block;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 /* Puls-Animation */
