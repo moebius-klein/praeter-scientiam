@@ -29,8 +29,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transform-origin: center center;
-    transition: transform 1.2s ease;
+    /* Best practice:
+       Zoom über Layout-Eigenschaften (width) statt transform:scale(),
+       damit nachfolgende Inhalte (Axiomblock) nicht in das Sigillum
+       hineinlaufen, wenn gezoomt wird. */
+    transition: width 1.2s ease;
 }
 
 /* Puls-Schicht */
@@ -44,7 +47,8 @@
 }
 
 #sigillum-wrapper.zoom {
-    transform: scale(2.5);
+    /* Zielgröße beim Klick-Zoom */
+    width: clamp(320px, 48vw, 980px);
 }
 
 /* Sigillum-Bild füllt den Wrapper */
