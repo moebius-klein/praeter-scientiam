@@ -86,7 +86,8 @@
 }
 
 #possibilitas {
-    font-size: 1.4rem;
+    font-size: 1.8667rem;
+    letter-spacing: 0.08rem;
     font-style: italic;
     color: var(--codex-gold-dim);
 }

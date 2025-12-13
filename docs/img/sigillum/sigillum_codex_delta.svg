@@ -30,14 +30,27 @@
           d="M 275,38.75 A 236.25 236.25 0 1 1 274.9,38.75" />
 
     <style><![CDATA[
-      .circle-gold { fill: none; stroke: #D8C088; stroke-width: 2.2; }
-      .ringtext   { fill: #D8C088; font-family: "Cinzel", serif; letter-spacing: 2px;  fill: #B89B3C; }
+      .circle-gold { fill: none; stroke: #E6D29A; stroke-width: 2.2; }
+      .ringtext   {
 
-      .midtext    { font-size: 15px; }
-      .dptext     { font-size: 15px; letter-spacing: 2.5px; }
-      .dwtext     { font-size: 15px;  fill: #120C0F; }
-      .plancktext { font-size: 15px; letter-spacing: 3.5px; }
-    ]]></style>
+        fill: #B89B3C;
+font-family: "Cinzel", serif; letter-spacing: 2px;
+}
+
+      .midtext    {
+        fill: #B89B3C; font-size: 15px; }
+      .dptext     {
+        fill: #B89B3C; font-size: 15px; letter-spacing: 2.5px; }
+      .dwtext     { font-size: 15px;  fill: #1B0F24; }
+      .plancktext {
+        fill: #B89B3C; font-size: 15px; letter-spacing: 3.5px; }
+
+      /* Letter-spacing moved from inline styles for maintainability */
+      #dante textPath { letter-spacing: 2.35px; }
+      #wittgenstein textPath { letter-spacing: 5.3px; }
+      .midtext textPath { letter-spacing: 1.45px; }
+      .dptext textPath { letter-spacing: 0.1px; }
+]]></style>
 
   </defs>
 
@@ -66,21 +79,54 @@
 
   <!-- Δmin – τὸ ἄτομον (mehrfach, für fast Vollring) -->
   <text class="ringtext midtext">
-    <textPath href="#midring_text_path" startOffset="0%" style="letter-spacing: 1.45px;">
+    <textPath href="#midring_text_path" startOffset="0%">
       Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον •
     </textPath>
   </text>
 
   <!-- Δp (leicht verkleinert, viele Wiederholungen) -->
   <text class="ringtext dptext">
-    <textPath href="#dp_ring_text_path" startOffset="0%" textLength="887.500" lengthAdjust="spacingAndGlyphs" style="letter-spacing: 0.1px;">
-      Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp  
+    <textPath href="#dp_ring_text_path" startOffset="0%" textLength="887.500" lengthAdjust="spacingAndGlyphs">
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>  
     </textPath>
   </text>
 
   <!-- Dante – jetzt Band-mittig, mehrfach, mit • getrennt -->
   <text id="dante" class="ringtext dwtext" opacity="1">
-    <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 2.35px;">
+    <textPath href="#dw_ring_text_path" startOffset="0%">
       INTRANTIBUS SPEM OMNEM RELINQUITE •
       INTRANTIBUS SPEM OMNEM RELINQUITE •
       INTRANTIBUS SPEM OMNEM RELINQUITE •
@@ -94,7 +140,7 @@
 
   <!-- Wittgenstein – gleiche Ringmitte, ebenfalls nahezu Vollring -->
   <text id="wittgenstein" class="ringtext dwtext" opacity="0">
-    <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 5.3px;">
+    <textPath href="#dw_ring_text_path" startOffset="0%">
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
     </textPath>
