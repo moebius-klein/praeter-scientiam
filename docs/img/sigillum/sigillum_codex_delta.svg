@@ -106,7 +106,12 @@
   </g>
 
   <!-- Dante – jetzt Band-mittig, mehrfach, mit • getrennt -->
-  <text id="dante" class="ringtext dwtext" opacity="1">
+    <!-- DW rotation group (CCW) -->
+  <g id="ring-dw-rot">
+    <animateTransform attributeName="transform" type="rotate"
+                      from="0 275 275" to="-360 275 275"
+                      dur="45s" repeatCount="indefinite"/>
+<text id="dante" class="ringtext dwtext" opacity="1">
     <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 2.35px;">
       INTRANTIBUS SPEM OMNEM RELINQUITE •
       INTRANTIBUS SPEM OMNEM RELINQUITE •
@@ -118,9 +123,7 @@
              keyTimes="0;0.3571;0.5;0.8571;1"
              values="1;1;0;0;1" />
   </text>
-
-  <!-- Wittgenstein – gleiche Ringmitte, ebenfalls nahezu Vollring -->
-  <text id="wittgenstein" class="ringtext dwtext" opacity="0">
+<text id="wittgenstein" class="ringtext dwtext" opacity="0">
     <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 5.3px;">
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
@@ -131,6 +134,8 @@
              keyTimes="0;0.3571;0.5;0.8571;1"
              values="0;0;1;1;0" />
   </text>
+  </g>
+
 
   <!-- äußerer Planck-Ring – ℓₚ tₚ mₚ Eₚ mehrfach -->
   <g id="ring-planck-rot">
