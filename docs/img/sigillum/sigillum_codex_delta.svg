@@ -15,27 +15,27 @@
 
     <!-- Δmin / τὸ ἄτομον -->
     <path id="midring_text_path"
-          d="M 275,180 A 95 95 0 1 1 274.9,180" />
+          d="M 275,181.25 A 93.75 93.75 0 1 1 274.9,181.25" />
 
     <!-- Δp -->
     <path id="dp_ring_text_path"
-          d="M 275,125 A 150 150 0 1 1 274.9,125" />
+          d="M 275,133.75 A 141.25 141.25 0 1 1 274.9,133.75" />
 
     <!-- Dante / Wittgenstein – jetzt exakt auf Bandmitte: r = 195 -->
     <path id="dw_ring_text_path"
-          d="M 275,80 A 195 195 0 1 1 274.9,80" />
+          d="M 275,86.25 A 188.75 188.75 0 1 1 274.9,86.25" />
 
     <!-- Planck-Ring näher zur Mitte: r = 228 -->
     <path id="planck_outer_text_path"
-          d="M 275,47 A 228 228 0 1 1 274.9,47" />
+          d="M 275,38.75 A 236.25 236.25 0 1 1 274.9,38.75" />
 
     <style><![CDATA[
       .circle-gold { fill: none; stroke: #D8C088; stroke-width: 2.2; }
-      .ringtext   { fill: #D8C088; font-family: "Cinzel", serif; letter-spacing: 2px; }
+      .ringtext   { fill: #D8C088; font-family: "Cinzel", serif; letter-spacing: 2px;  fill: #B89B3C; }
 
       .midtext    { font-size: 15px; }
-      .dptext     { font-size: 17px; letter-spacing: 2.5px; }
-      .dwtext     { font-size: 9px;  fill: #120C0F; }
+      .dptext     { font-size: 15px; letter-spacing: 2.5px; }
+      .dwtext     { font-size: 15px;  fill: #120C0F; }
       .plancktext { font-size: 15px; letter-spacing: 3.5px; }
     ]]></style>
 
@@ -44,21 +44,21 @@
   <!-- Außenringe -->
   <g filter="url(#goldenGlow)">
     <circle cx="275" cy="275" r="260" class="circle-gold"/>
-    <circle cx="275" cy="275" r="210" class="circle-gold"/>
+    <circle cx="275" cy="275" r="212.5" class="circle-gold"/>
   </g>
 
   <!-- goldenes Dante/Wittgenstein-Band -->
-  <circle cx="275" cy="275" r="195"
-          fill="none" stroke="#D8C088" stroke-width="24"/>
+  <circle cx="275" cy="275" r="188.75"
+          fill="none" stroke="#B89B3C" stroke-width="47.5" stroke-opacity="1.0"/>
 
   <!-- übrige Kreise -->
-  <circle cx="275" cy="275" r="180" class="circle-gold"/>
-  <circle cx="275" cy="275" r="120" class="circle-gold"/>
+  <circle cx="275" cy="275" r="165" class="circle-gold"/>
+  <circle cx="275" cy="275" r="117.5" class="circle-gold"/>
   <circle cx="275" cy="275" r="70"  class="circle-gold"/>
 
   <!-- TOTUM -->
   <text x="275" y="287"
-        fill="#D8C088"
+        fill="#B89B3C"
         font-family="Cinzel, serif"
         font-size="32" text-anchor="middle">
     TOTUM
@@ -66,27 +66,27 @@
 
   <!-- Δmin – τὸ ἄτομον (mehrfach, für fast Vollring) -->
   <text class="ringtext midtext">
-    <textPath href="#midring_text_path" startOffset="50%">
+    <textPath href="#midring_text_path" startOffset="0%" style="letter-spacing: 1.45px;">
       Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον •
     </textPath>
   </text>
 
   <!-- Δp (leicht verkleinert, viele Wiederholungen) -->
   <text class="ringtext dptext">
-    <textPath href="#dp_ring_text_path" startOffset="0%">
-      Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp
+    <textPath href="#dp_ring_text_path" startOffset="0%" textLength="887.500" lengthAdjust="spacingAndGlyphs" style="letter-spacing: 0.1px;">
+      Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp Δp  
     </textPath>
   </text>
 
   <!-- Dante – jetzt Band-mittig, mehrfach, mit • getrennt -->
   <text id="dante" class="ringtext dwtext" opacity="1">
-    <textPath href="#dw_ring_text_path" startOffset="0%">
+    <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 2.35px;">
       INTRANTIBUS SPEM OMNEM RELINQUITE •
       INTRANTIBUS SPEM OMNEM RELINQUITE •
       INTRANTIBUS SPEM OMNEM RELINQUITE •
     </textPath>
     <animate attributeName="opacity"
-             dur="14s"
+             dur="28s"
              repeatCount="indefinite"
              keyTimes="0;0.3571;0.5;0.8571;1"
              values="1;1;0;0;1" />
@@ -94,13 +94,12 @@
 
   <!-- Wittgenstein – gleiche Ringmitte, ebenfalls nahezu Vollring -->
   <text id="wittgenstein" class="ringtext dwtext" opacity="0">
-    <textPath href="#dw_ring_text_path" startOffset="0%">
-      DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
+    <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 5.3px;">
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
     </textPath>
     <animate attributeName="opacity"
-             dur="14s"
+             dur="28s"
              repeatCount="indefinite"
              keyTimes="0;0.3571;0.5;0.8571;1"
              values="0;0;1;1;0" />
@@ -108,7 +107,39 @@
 
   <!-- äußerer Planck-Ring – ℓₚ tₚ mₚ Eₚ mehrfach -->
   <text class="ringtext plancktext">
-    <textPath href="#planck_outer_text_path" startOffset="0%">
+    <textPath href="#planck_outer_text_path" startOffset="0%" textLength="1484.403" lengthAdjust="spacingAndGlyphs">
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      t<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      m<tspan baseline-shift="sub" font-size="65%">p</tspan>
+      E<tspan baseline-shift="sub" font-size="65%">p</tspan>
       ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
       t<tspan baseline-shift="sub" font-size="65%">p</tspan>
       m<tspan baseline-shift="sub" font-size="65%">p</tspan>
