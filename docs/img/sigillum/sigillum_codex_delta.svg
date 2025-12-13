@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
      width="900" height="900"
-     viewBox="0 0 550 550">
+     viewBox="-30 -30 610 610">
 
   <defs>
 
@@ -30,29 +30,21 @@
           d="M 275,38.75 A 236.25 236.25 0 1 1 274.9,38.75" />
 
     <style><![CDATA[
-      .circle-gold { fill: none; stroke: #E6D29A; stroke-width: 2.2; }
-      .ringtext   {
+      .circle-gold { fill: none; stroke: #D8C088; stroke-width: 2.2; }
+      .ringtext   { fill: #D8C088; font-family: "Cinzel", serif; letter-spacing: 2px;  fill: #B89B3C; }
 
-        fill: #B89B3C;
-font-family: "Cinzel", serif; letter-spacing: 2px;
-}
-
-      .midtext    {
-        fill: #B89B3C; font-size: 15px; }
-      .dptext     {
-        fill: #B89B3C; font-size: 15px; letter-spacing: 2.5px; }
-      .dwtext     { font-size: 15px;  fill: #1B0F24; }
-      .plancktext {
-        fill: #B89B3C; font-size: 15px; letter-spacing: 3.5px; }
-
-      /* Letter-spacing moved from inline styles for maintainability */
-      #dante textPath { letter-spacing: 2.35px; }
-      #wittgenstein textPath { letter-spacing: 5.3px; }
-      .midtext textPath { letter-spacing: 1.45px; }
-      .dptext textPath { letter-spacing: 0.1px; }
+      .midtext    { font-size: 15px; }
+      .dptext     { font-size: 15px; letter-spacing: 2.5px; }
+      .dwtext     { font-size: 15px;  fill: #120C0F; }
+      .plancktext { font-size: 15px; letter-spacing: 3.5px; }
+      .munditext { fill: #B89B3C; font-size: 13px; letter-spacing: 2.2px; }
 ]]></style>
 
-  </defs>
+      <!-- MUNDI outer ring text path (outside the sigillum, no extra ring) -->
+    <path id="mundi_outer_text_path"
+          d="M 275 275 m -270,0 a 270,270 0 1,1 540,0 a 270,270 0 1,1 -540,0"/>
+
+</defs>
 
   <!-- Außenringe -->
   <g filter="url(#goldenGlow)">
@@ -76,57 +68,46 @@ font-family: "Cinzel", serif; letter-spacing: 2px;
         font-size="32" text-anchor="middle">
     TOTUM
   </text>
+  <!-- ENTRATE (appears when the sigillum begins to pulsate) -->
+  <text x="275" y="312"
+        fill="#B89B3C"
+        font-family="Cinzel, serif"
+        font-size="20"
+        letter-spacing="2px"
+        text-anchor="middle"
+        opacity="0">
+    ENTRATE!
+    <animate attributeName="opacity"
+             dur="10s"
+             fill="freeze"
+             keyTimes="0;0.7;1"
+             values="0;0;1" />
+  </text>
+
 
   <!-- Δmin – τὸ ἄτομον (mehrfach, für fast Vollring) -->
-  <text class="ringtext midtext">
-    <textPath href="#midring_text_path" startOffset="0%">
+  <g id="ring-mid-rot">
+    <animateTransform attributeName="transform" type="rotate" from="0 275 275" to="-360 275 275" dur="90s" repeatCount="indefinite"/>
+    <text class="ringtext midtext">
+    <textPath href="#midring_text_path" startOffset="0%" style="letter-spacing: 1.45px;">
       Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον • Δmin • τὸ ἄτομον •
     </textPath>
   </text>
+  </g>
 
   <!-- Δp (leicht verkleinert, viele Wiederholungen) -->
-  <text class="ringtext dptext">
-    <textPath href="#dp_ring_text_path" startOffset="0%" textLength="887.500" lengthAdjust="spacingAndGlyphs">
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>
-      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>  
+  <g id="ring-dp-rot">
+    <animateTransform attributeName="transform" type="rotate" from="0 275 275" to="360 275 275" dur="120s" repeatCount="indefinite"/>
+    <text class="ringtext dptext">
+    <textPath href="#dp_ring_text_path" startOffset="0%" textLength="887.500" lengthAdjust="spacingAndGlyphs" style="letter-spacing: 0.1px;">
+      <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan> <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan><tspan baseline-shift="sub" font-size="65%">p</tspan>  
     </textPath>
   </text>
+  </g>
 
   <!-- Dante – jetzt Band-mittig, mehrfach, mit • getrennt -->
   <text id="dante" class="ringtext dwtext" opacity="1">
-    <textPath href="#dw_ring_text_path" startOffset="0%">
+    <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 2.35px;">
       INTRANTIBUS SPEM OMNEM RELINQUITE •
       INTRANTIBUS SPEM OMNEM RELINQUITE •
       INTRANTIBUS SPEM OMNEM RELINQUITE •
@@ -140,7 +121,7 @@ font-family: "Cinzel", serif; letter-spacing: 2px;
 
   <!-- Wittgenstein – gleiche Ringmitte, ebenfalls nahezu Vollring -->
   <text id="wittgenstein" class="ringtext dwtext" opacity="0">
-    <textPath href="#dw_ring_text_path" startOffset="0%">
+    <textPath href="#dw_ring_text_path" startOffset="0%" style="letter-spacing: 5.3px;">
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
       DE QUO TACERI NEQUIT, DE EO TACENDUM EST. •
     </textPath>
@@ -152,7 +133,9 @@ font-family: "Cinzel", serif; letter-spacing: 2px;
   </text>
 
   <!-- äußerer Planck-Ring – ℓₚ tₚ mₚ Eₚ mehrfach -->
-  <text class="ringtext plancktext">
+  <g id="ring-planck-rot">
+    <animateTransform attributeName="transform" type="rotate" from="0 275 275" to="360 275 275" dur="180s" repeatCount="indefinite"/>
+    <text class="ringtext plancktext">
     <textPath href="#planck_outer_text_path" startOffset="0%" textLength="1484.403" lengthAdjust="spacingAndGlyphs">
       ℓ<tspan baseline-shift="sub" font-size="65%">p</tspan>
       t<tspan baseline-shift="sub" font-size="65%">p</tspan>
@@ -204,5 +187,19 @@ font-family: "Cinzel", serif; letter-spacing: 2px;
       E<tspan baseline-shift="sub" font-size="65%">p</tspan>
     </textPath>
   </text>
+  </g>
+
+
+  <!-- MUNDI (outside the sigillum) -->
+  <g id="mundi-outer-rot">
+    <animateTransform attributeName="transform" type="rotate"
+                      from="0 275 275" to="-360 275 275"
+                      dur="210s" repeatCount="indefinite"/>
+    <text class="ringtext munditext">
+      <textPath href="#mundi_outer_text_path" startOffset="0%" textLength="1696.5" lengthAdjust="spacingAndGlyphs">
+        MUNDUS PHYSICUS • MUNDUS MATHEMATICUS • MUNDUS LOGICUS • MUNDUS PHILOSOPHICUS • MUNDUS INFORMATICUS • MUNDUS SEMANTICUS •
+      </textPath>
+    </text>
+  </g>
 
 </svg>
