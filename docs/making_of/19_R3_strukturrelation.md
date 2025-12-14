@@ -220,7 +220,7 @@ R3 ist **pure Struktur**,
 nicht Wirkung.
 
 Es ist die **ontologische Strukturierung**
-der Möglichkeiten aus Δmin und Δp.
+der Möglichkeiten aus Δmin und Δs.
 
 Physik entsteht erst ab R5.
 

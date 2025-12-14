@@ -1,6 +1,6 @@
 Hier ist die vollständige Datei **18_R2_delta_min_paarbildung.md** —
 klar, präzise, ontologisch sauber, vollständig im Stil des Codex Δ.
-Sie knüpft nahtlos an Δmin und Δp an und bildet das Fundament aller weiteren Relationsebenen.
+Sie knüpft nahtlos an Δmin und Δs an und bildet das Fundament aller weiteren Relationsebenen.
 
 ---
 
@@ -56,23 +56,23 @@ Doch diese Selbstrelation ist instabil:
 
 ---
 
-## **2. Die Bedingung der Paarbildung: Δp**
+## **2. Die Bedingung der Paarbildung: Δs**
 
 Zwei Δmin können nur dann
 zueinander in Relation treten,
 wenn der Unterschied zwischen ihnen
-**größer oder gleich Δp** ist.
+**größer oder gleich Δs** ist.
 
-Δp ist die minimale stabile Differenz,
+Δs ist die minimale stabile Differenz,
 bei der Relation Bestand haben kann.
 
-Ohne Δp wäre jede R2-Relation sofort instabil
+Ohne Δs wäre jede R2-Relation sofort instabil
 und würde zurück in eine Δmin-Selbstrelation kollabieren.
 
-Darum kommt Δp **vor** R2:
+Darum kommt Δs **vor** R2:
 
 > Δmin erzeugt Möglichkeit,
-> Δp erzeugt Stabilität.
+> Δs erzeugt Stabilität.
 
 Erst dann kann R2 entstehen.
 
@@ -243,7 +243,7 @@ präphysikalische Grundschichten zeigen:
 
 * TOTUM
 * Δmin
-* Δp
+* Δs
 * Dante/Wittgenstein-Schwelle
 * Planck-Schwelle
 
@@ -263,7 +263,7 @@ R2 ist:
 * die erste Fremdrelation der Welt
 * der Übergang von Selbstbezug zu gegenseitigem Bezug
 * der Ursprung von Richtung, Muster und Logik
-* stabilisiert durch Δp
+* stabilisiert durch Δs
 * unabhängig von Raum und Zeit
 * der erste Knoten der entstehenden Realität
 * der ontologische Kern aller höheren Relationen

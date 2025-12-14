@@ -22,7 +22,7 @@ und erlaubt erst das Auftreten der nächsthöheren Ebene.
 So wächst Welt nicht in Sprüngen,
 sondern in **Schichten der Relation**.
 
-Nach TOTUM, Δmin und Δp
+Nach TOTUM, Δmin und Δs
 beginnt die eigentliche Strukturierung der Realität
 mit R2.
 
@@ -71,7 +71,7 @@ Doch das ist eine Illusion der relationellen Ebenen R5–R8.
 Auf der fundamentalen Ebene gilt:
 
 * Δmin ist unvorstellbar klein.
-* Δp ist eine minimale Grenze des Unterscheidbaren.
+* Δs ist eine minimale Grenze des Unterscheidbaren.
 * R2–R4 erzeugen Netzwerke — keine Räume.
 * Erst R5 macht daraus **Raumzeit**.
 * Erst R6 macht daraus **Felder**.
@@ -115,7 +115,7 @@ dass sie wie „Materie“ erscheint.
 *Die Relation zweier Unterschiede*
 
 R2 entsteht, wenn zwei Δmin
-hinreichend stabil (durch Δp)
+hinreichend stabil (durch Δs)
 aufeinander verweisen können.
 
 Daraus entsteht:

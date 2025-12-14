@@ -63,7 +63,7 @@ sondern ein **Wechsel der Weltbeschreibung**.
 Vor der Planck-Schwelle existieren:
 
 * Δmin
-* Δp
+* Δs
 * Relationen niedriger Ordnung
 * strukturelle Wiederholbarkeit
 * die Möglichkeit von Muster
@@ -81,7 +81,7 @@ Erst an der Planck-Schwelle entstehen:
 * Felder, Partikel, Wellen
 
 Physik beginnt **nicht** bei Δmin.
-Physik beginnt **nicht** bei Δp.
+Physik beginnt **nicht** bei Δs.
 Physik beginnt bei **Planck**.
 
 Darum ist dieser Ring der erste physikalische.
@@ -129,7 +129,7 @@ Denn:
 In dieser Reihenfolge:
 
 1. Welt entsteht (Δmin)
-2. Welt stabilisiert sich (Δp)
+2. Welt stabilisiert sich (Δs)
 3. Welt wird interpretierbar (Dante/Wittgenstein)
 4. Welt wird physikalisch (Planck)
 

@@ -31,7 +31,7 @@ Ein gezeichneter Ring erzeugt immer eine Aussage:
 
 Doch genau das wäre an dieser Stelle ontologisch falsch.
 
-Zwischen **Δp**, der Schwelle der Unterscheidbarkeit,  
+Zwischen **Δs**, der Schwelle der Unterscheidbarkeit,  
 und der **Planck-Schwelle**, der ersten physikalischen Ordnung,  
 existiert **keine eigene physikalische Struktur**.
 

@@ -150,7 +150,7 @@ Unterhalb der epistemischen Schwelle:
 
 * TOTUM
 * Δmin
-* Δp
+* Δs
 
 ist Rotation bedeutungslos.
 Dort gibt es keine interpretierbare Zeit.

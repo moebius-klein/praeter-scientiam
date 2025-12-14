@@ -107,7 +107,7 @@
     </text>
   </g>
 
-  <!-- Δp (leicht verkleinert, viele Wiederholungen) -->
+  <!-- Δs (leicht verkleinert, viele Wiederholungen) -->
   <g id="ring-dp-rot">
     <animateTransform attributeName="transform" type="rotate" from="0 275 275" to="360 275 275" dur="120s"
       repeatCount="indefinite" />
@@ -115,51 +115,137 @@
       <textPath href="#dp_ring_text_path" startOffset="0%" textLength="887.500" lengthAdjust="spacingAndGlyphs"
         style="letter-spacing: 0.1px;">
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
         <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
-        <tspan baseline-shift="sub" font-size="65%">p</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
+        <tspan textLength="0.6em" lengthAdjust="spacingAndGlyphs">Δ</tspan>
+<tspan baseline-shift="sub" font-size="65%" dx="-0.18em">s</tspan>
+<tspan dx="0.18em">&#8203;</tspan>
       </textPath>
     </text>
   </g>

@@ -7,12 +7,12 @@ Die Struktur ist jetzt:
 
 1. **TOTUM** – das Ununterschiedene
 2. **Δmin** – der erste Unterschied
-3. **Δp** – die erste Grenze des Unterscheidbaren
+3. **Δs** – die erste Grenze des Unterscheidbaren
 4. **→ SCHWELLE (Dante/Wittgenstein)** – Eintritt in Welt, Sprache, Physik
 5. **Planck-Ring** – physikalische Unterscheidbarkeit & Quantenordnung
 6. **höhere Relationen (R5–R8)**
 
-Und genau zwischen **Δp** und **Planck**
+Und genau zwischen **Δs** und **Planck**
 liegt die **Schwelle**, die nicht physikalisch,
 sondern sprachlich-epistemisch ist.
 
@@ -40,7 +40,7 @@ Wir fahren fort.
 
 *Der Ring, der nicht physikalisch, sondern sprachlich ist*
 
-Der Schwellenring, der die Sphäre von Δp
+Der Schwellenring, der die Sphäre von Δs
 von der physikalischen Sphäre trennt,
 gehört weder zur Mathematik
 noch zur Physik
@@ -63,7 +63,7 @@ auf radikal unterschiedliche Weise.
 
 ## **1. Was diese Schwelle tatsächlich bedeutet**
 
-Bis Δp entsteht nur Struktur —
+Bis Δs entsteht nur Struktur —
 präphysikalisch, still, formlos, ohne Sprache.
 
 Ab der Planck-Schwelle entsteht Physik —
@@ -153,7 +153,7 @@ Beide beschreiben denselben Übergang:
 * von Struktur → Bedeutung
 * von Relation → Sprache
 * von Möglichkeit → Welt
-* von Δp → Erkennbarkeit
+* von Δs → Erkennbarkeit
 * von Ordnung → Beschreibung
 * von Sein → Sagbarkeit
 
@@ -174,7 +174,7 @@ Alle präphysikalischen Ringe rotieren nicht:
 
 * TOTUM
 * Δmin
-* Δp
+* Δs
 
 Erst ab dieser Schwelle
 hat Rotation semantische Bedeutung:
@@ -204,19 +204,19 @@ Doch:
 
 ---
 
-## **6. Warum dieser Ring über Δp kommt**
+## **6. Warum dieser Ring über Δs kommt**
 
 Die Reihenfolge ist zwingend:
 
 1. TOTUM
 2. Δmin (Unterschied)
-3. Δp (Unterscheidbarkeit)
+3. Δs (Unterscheidbarkeit)
 4. **Schwelle des Sagbaren (Dante/Wittgenstein)**
 5. Planck-Ring (physikalische Ordnung)
 
 Denn:
 
-* Δp regelt, was unterscheidbar bleibt
+* Δs regelt, was unterscheidbar bleibt
 * der Schwellenring regelt, was sagbar wird
 * der Planck-Ring regelt, was physikalisch wird
 
@@ -233,7 +233,7 @@ Der Dante/Wittgenstein-Ring ist:
 * der Eintritt in Welt als Bedeutung
 * die Grenze des Sagbaren und Erfahrbaren
 * das Portal, das „Welt“ erst als Welt erscheinen lässt
-* der richtige Übergang zwischen Δp und Planck
+* der richtige Übergang zwischen Δs und Planck
 
 Darum hat er in der Struktur des Siegels
 **genau diesen Platz**.

@@ -178,7 +178,7 @@ mehrere Unterschiede voraus.
 Δmin ist **präphysikalisch**.
 
 Deshalb liegt Δmin im Siegel
-unterhalb des Δp-Rings
+unterhalb des Δs-Rings
 und weit unterhalb des Planck-Rings.
 
 Δmin ist die Schwelle,

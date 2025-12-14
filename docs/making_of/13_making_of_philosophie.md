@@ -109,7 +109,7 @@ So bleibt der gesamte Denkprozess **lesbar**.
 Wir gestalten nicht von außen.
 Wir entdecken.
 
-TOTUM, Δmin, Δp, der Schwellenring, die Rotation, die Phi-Proportion —
+TOTUM, Δmin, Δs, der Schwellenring, die Rotation, die Phi-Proportion —
 
 Sie sind keine Designentscheidungen,
 sondern logische Notwendigkeiten,
