@@ -1,0 +1,28 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== COLORS ===== */
+:root {
+    --umbra-deep: #0b0013;
+    --purple-haze: #1a0229;
+    --purple-haze-2: #2d0a3d;
+    --codex-gold: #d8c088;
+    --codex-gold-dim: #a89670;
+    --gold-nebula: rgba(212, 180, 120, 0.08);
+}
+
+/* ===== FONTS ===== */
+body {
+    /* If Cinzel can't be loaded, fall back to common serif faces */
+    font-family: "Cinzel", "Times New Roman", Times, serif;
+    color: var(--codex-gold);
+    background: radial-gradient(circle at center,
+                var(--purple-haze-2) 0%,
+                var(--purple-haze) 45%,
+                var(--umbra-deep) 100%);
+    overflow: hidden;
+}

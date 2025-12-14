@@ -1,0 +1,89 @@
+/* =========================================================
+   CONFLICT-FREE OVERRIDES
+   - JS steuert transform (stufenloser Zoom via rAF)
+   - CSS darf transform NICHT mehr animieren/transitionieren
+   ========================================================= */
+
+/* Cosmos canvases dürfen niemals Klicks abfangen */
+#nebula-canvas,
+#starfield-canvas {
+  pointer-events: none !important;
+}
+
+/* Landing container (falls nicht schon gesetzt) */
+#landing-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sigillum wrapper: JS steuert transform, daher keine CSS-Animation/Transition */
+#sigillum-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  /* Baseline muss zum JS-Start passen (startScale) */
+  transform: translate(-50%, -50%) scale(0.30);
+  transform-origin: center center;
+
+  /* Konfliktkiller */
+  transition: none !important;
+  animation: none !important;
+
+  will-change: transform;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Falls irgendwo im alten CSS .zoom eine Animation/Transition gesetzt war: neutralisieren */
+#sigillum-wrapper.zoom {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* IMG/SVG im Wrapper */
+#sigillum {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Axiom-Block: unten mittig fixiert (nicht links oben) */
+#axiom-block {
+  position: absolute;
+  left: 50%;
+  bottom: 6vh;
+  transform: translateX(-50%);
+  z-index: 30;
+
+  opacity: 0;
+  transition: opacity 0.8s ease;
+
+  text-align: center;
+  pointer-events: none;
+}
+
+#axiom-block.show {
+  opacity: 1;
+}
+
+/* Cosmos Layer sichtbar erst nach Aktivierung (3s-Delay macht JS) */
+#nebula-canvas,
+#starfield-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+#landing-container.space-active #nebula-canvas,
+#landing-container.space-active #starfield-canvas {
+  opacity: 1;
+}
