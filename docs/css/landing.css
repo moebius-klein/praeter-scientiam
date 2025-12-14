@@ -1,99 +1,89 @@
-/* Container */
+/* =========================================================
+   CONFLICT-FREE OVERRIDES
+   - JS steuert transform (stufenloser Zoom via rAF)
+   - CSS darf transform NICHT mehr animieren/transitionieren
+   ========================================================= */
+
+/* Cosmos canvases dürfen niemals Klicks abfangen */
+#nebula-canvas,
+#starfield-canvas {
+  pointer-events: none !important;
+}
+
+/* Landing container (falls nicht schon gesetzt) */
 #landing-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* Golden Nebula */
-#landing-container::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 40%,
-                var(--gold-nebula) 0%,
-                transparent 60%);
-    mix-blend-mode: screen;
-    pointer-events: none;
-}
-
-/* Sigillum Wrapper: Größe, Puls, Zoom */
-/* Wrapper steuert NUR Zoom */
+/* Sigillum wrapper: JS steuert transform, daher keine CSS-Animation/Transition */
 #sigillum-wrapper {
-    /* Startgröße: responsive, aber mit Grenzen */
-    width: clamp(180px, 18vw, 360px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Best practice:
-       Zoom über Layout-Eigenschaften (width) statt transform:scale(),
-       damit nachfolgende Inhalte (Axiomblock) nicht in das Sigillum
-       hineinlaufen, wenn gezoomt wird. */
-    transition: width 1.2s ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  /* Baseline muss zum JS-Start passen (startScale) */
+  transform: translate(-50%, -50%) scale(0.30);
+  transform-origin: center center;
+
+  /* Konfliktkiller */
+  transition: none !important;
+  animation: none !important;
+
+  will-change: transform;
+  z-index: 10;
+  cursor: pointer;
 }
 
-/* Puls-Schicht */
-#sigillum-pulse {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: pulsare 6s ease-in-out infinite;
-}
-
+/* Falls irgendwo im alten CSS .zoom eine Animation/Transition gesetzt war: neutralisieren */
 #sigillum-wrapper.zoom {
-    /* Zielgröße beim Klick-Zoom */
-    width: clamp(320px, 48vw, 980px);
+  transition: none !important;
+  animation: none !important;
 }
 
-/* Sigillum-Bild füllt den Wrapper */
+/* IMG/SVG im Wrapper */
 #sigillum {
-    width: 100%;
-    height: auto;
-    display: block;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-drag: none;
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-/* Puls-Animation */
-@keyframes pulsare {
-    0%   { transform: scale(1.00); opacity: 1; }
-    50%  { transform: scale(1.02); opacity: 0.92; }
-    100% { transform: scale(1.00); opacity: 1; }
-}
-
-/* Axiomblock (anfangs versteckt) */
+/* Axiom-Block: unten mittig fixiert (nicht links oben) */
 #axiom-block {
-    margin-top: 4vh;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 1.5s ease, transform 1.5s ease;
+  position: absolute;
+  left: 50%;
+  bottom: 6vh;
+  transform: translateX(-50%);
+  z-index: 30;
+
+  opacity: 0;
+  transition: opacity 0.8s ease;
+
+  text-align: center;
+  pointer-events: none;
 }
 
-/* Textstile */
-#satz {
-    font-size: 3rem;
-    letter-spacing: 0.15rem;
-    margin-bottom: 1rem;
-    color: var(--codex-gold);
-}
-
-#possibilitas {
-    font-size: 1.8667rem;
-    letter-spacing: 0.08rem;
-    font-style: italic;
-    color: var(--codex-gold-dim);
-}
-
-/* Aktiviert */
 #axiom-block.show {
-    opacity: 1;
-    transform: translateY(0px);
+  opacity: 1;
+}
+
+/* Cosmos Layer sichtbar erst nach Aktivierung (3s-Delay macht JS) */
+#nebula-canvas,
+#starfield-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+#landing-container.space-active #nebula-canvas,
+#landing-container.space-active #starfield-canvas {
+  opacity: 1;
 }
