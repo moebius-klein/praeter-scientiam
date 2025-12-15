@@ -4,6 +4,10 @@
    - CSS darf transform NICHT mehr animieren/transitionieren
    ========================================================= */
 
+body {
+  caret-color: transparent;
+}
+
 /* Cosmos canvases dürfen niemals Klicks abfangen */
 #nebula-canvas,
 #starfield-canvas {
