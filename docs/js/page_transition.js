@@ -1,64 +1,50 @@
-// js/page_transition.js
-
-function pickTarget() {
-  // Prefer <main> on content pages
-  const main = document.querySelector("main");
-  if (main) return main;
-
-  // Landing page wrapper
-  const landing = document.getElementById("landing-container");
-  if (landing) return landing;
-
-  return document.body;
+function sceneEl() {
+  return document.getElementById("scene");
 }
 
 function setOriginFromElement(target, originEl) {
   if (!originEl) return;
-
-  const rect = originEl.getBoundingClientRect();
-  const cx = rect.left + rect.width / 2;
-  const cy = rect.top + rect.height / 2;
-
-  const xPct = (cx / window.innerWidth) * 100;
-  const yPct = (cy / window.innerHeight) * 100;
-
-  target.style.transformOrigin = `${xPct}% ${yPct}%`;
+  const r = originEl.getBoundingClientRect();
+  const cx = r.left + r.width / 2;
+  const cy = r.top + r.height / 2;
+  const x = (cx / window.innerWidth) * 100;
+  const y = (cy / window.innerHeight) * 100;
+  target.style.transformOrigin = `${x}% ${y}%`;
 }
 
-export function transitionTo(url, effect, originEl = null, options = {}) {
-  const target = options.targetEl ?? pickTarget();
-  if (!target) {
-    window.location.href = url;
-    return;
-  }
+export async function playOut(effect, originEl = null) {
+  const el = sceneEl();
+  if (!el) return;
 
-  target.classList.add("transition-target");
+  el.classList.add("transition-target");
   document.body.classList.add("is-transitioning");
-
-  setOriginFromElement(target, originEl);
+  setOriginFromElement(el, originEl);
 
   const cls =
     effect === "zoom-in" ? "is-zooming-in" :
-    effect === "collapse-out" ? "is-collapsing-out" :
-    null;
+      effect === "collapse-out" ? "is-collapsing-out" :
+        null;
 
-  if (!cls) {
-    window.location.href = url;
-    return;
-  }
+  if (!cls) return;
 
-  // Force style flush so the transition reliably starts
-  void target.offsetWidth;
+  // Reflow
+  void el.offsetWidth;
 
-  target.classList.add(cls);
+  el.classList.add(cls);
 
-  const timeoutMs = effect === "zoom-in" ? 900 : 850;
-  const fallback = window.setTimeout(() => {
-    window.location.href = url;
-  }, timeoutMs);
+  await new Promise((resolve) => {
+    const t = setTimeout(resolve, 900);
+    el.addEventListener("transitionend", () => {
+      clearTimeout(t);
+      resolve();
+    }, { once: true });
+  });
+}
 
-  target.addEventListener("transitionend", () => {
-    window.clearTimeout(fallback);
-    window.location.href = url;
-  }, { once: true });
+export function playIn() {
+  const el = sceneEl();
+  if (!el) return;
+  el.classList.add("is-fading-in");
+  // Interactions wieder an
+  document.body.classList.remove("is-transitioning");
 }

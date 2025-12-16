@@ -75,7 +75,10 @@ body {
   opacity: 1;
 }
 
-/* Cosmos Layer sichtbar erst nach Aktivierung (3s-Delay macht JS) */
+/* Cosmos Layer sichtbar erst nach Aktivierung (3s-Delay macht JS)
+   Wichtig: Die Canvas-Elemente liegen in index.html (außerhalb von #landing-container).
+   Daher wird per body.space-active getoggelt.
+*/
 #nebula-canvas,
 #starfield-canvas {
   position: absolute;
@@ -87,7 +90,7 @@ body {
   transition: opacity 1.2s ease;
 }
 
-#landing-container.space-active #nebula-canvas,
-#landing-container.space-active #starfield-canvas {
+body.space-active #nebula-canvas,
+body.space-active #starfield-canvas {
   opacity: 1;
 }

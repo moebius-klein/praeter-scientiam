@@ -26,15 +26,17 @@ body.totum {
 
 /* Satzblock: exakt Mitte (Row 2 / Col 2) */
 #satzblock {
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: center;
-    align-self: center;
-
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* vertikal */
+    align-items: center;
+    /* horizontal */
     text-align: center;
     user-select: none;
     -webkit-user-select: none;
-    cursor: default;
 }
 
 #satz {
@@ -51,19 +53,18 @@ body.totum {
     opacity: 0.92;
 }
 
-/* Relata: oben/links und unten/rechts (Viewport-bezogen) */
 #relatum-left {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
-    align-self: start;
+    position: fixed;
+    left: clamp(12px, 3vw, 48px);
+    top: clamp(12px, 3vw, 48px);
+    z-index: 20;
 }
 
 #relatum-right {
-    grid-column: 3;
-    grid-row: 3;
-    justify-self: end;
-    align-self: end;
+    position: fixed;
+    right: clamp(12px, 3vw, 48px);
+    bottom: clamp(12px, 3vw, 48px);
+    z-index: 20;
 }
 
 /* Siegel skalieren sauber (auch auf sehr schmalen Screens) */
@@ -75,12 +76,16 @@ body.totum {
 
 /* Relata sollen nie wie Text wirken */
 #relatum-left,
-#relatum-right,
-#relatum-left img,
-#relatum-right img {
-    cursor: default !important;
+#relatum-right {
+    cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
+}
+
+#relatum-left img,
+#relatum-right img {
+    pointer-events: none;
+    /* Klick geht auf den Container */
     -webkit-user-drag: none;
 }
 
@@ -96,7 +101,7 @@ body.totum {
     font-size: clamp(14px, 1.2vw, 18px);
 }
 
-body.gloss-enabled #possibilitas:hover + .gloss,
-body.gloss-enabled #possibilitas:focus + .gloss {
+body.gloss-enabled #possibilitas:hover+.gloss,
+body.gloss-enabled #possibilitas:focus+.gloss {
     opacity: 0.85;
 }

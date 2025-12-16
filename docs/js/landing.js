@@ -1,27 +1,20 @@
-// landing.js
-export const INTRO_ZOOM_MS = 15000;
+// js/scenes/landing_scene.js
 
-document.addEventListener("DOMContentLoaded", () => {
+export default function init({ go, ensureFullscreenOnce }) {
   const landingContainer = document.getElementById("landing-container");
-
   const sigillum = document.getElementById("sigillum");
   const sigillumWrapper = document.getElementById("sigillum-wrapper");
   const axiomBlock = document.getElementById("axiom-block");
 
-  let activated = false;
+  if (!landingContainer || !sigillum || !sigillumWrapper || !axiomBlock) return;
 
-  /* -------------------------------------------------
-     Fullscreen helper
-     ------------------------------------------------- */
-  function requestFullscreen(targetEl) {
-    const el = targetEl || document.documentElement;
+  const INTRO_ZOOM_MS = 15000;
 
-    if (el.requestFullscreen) return el.requestFullscreen();
-    if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
-    if (el.msRequestFullscreen) return el.msRequestFullscreen();
+  // 2-Klick-Logik:
+  let activated = false; // Intro läuft/gelaufen (1. Klick)
+  let ready = false;     // Intro fertig (2. Klick erlaubt)
 
-    return Promise.resolve();
-  }
+  sigillum.style.cursor = "pointer";
 
   /* -------------------------------------------------
      Audio setup (user-gesture safe)
@@ -31,10 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   introAudio.volume = 0.6;
 
   function playIntroAudio() {
-    // play() MUST be inside the click handler call stack
-    introAudio.play().catch(() => {
-      // silently ignore (browser may block if gesture lost)
-    });
+    // Muss im User-Gesture Callstack passieren
+    introAudio.play().catch(() => { });
   }
 
   /* -------------------------------------------------
@@ -63,36 +54,22 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(frame);
   }
 
-  /* -------------------------------------------------
-     Click handler (zentraler Eintrittspunkt)
-     ------------------------------------------------- */
-  sigillumWrapper.addEventListener("click", () => {
-    if (activated) return;
-    activated = true;
-
-    // 1) Fullscreen (sofort)
-    requestFullscreen(document.documentElement).catch(() => {
-      requestFullscreen(sigillumWrapper).catch(() => {});
-    });
-
-    // 2) Audio starten (synchron mit Zoom)
+  function startIntroNow() {
+    // Audio + Zoom + UI + Stars
     playIntroAudio();
 
-    // 3) Zoom starten (stufenlos)
-    sigillumWrapper.classList.add("zoom"); // Marker
+    sigillumWrapper.classList.add("zoom");
     zoomSigillum({
       el: sigillumWrapper,
       startScale: 0.30,
       endScale: 1.00,
-      durationMs: 15000
+      durationMs: INTRO_ZOOM_MS
     });
 
-    // 4) Satz −1 / Possibilitas est!
     setTimeout(() => {
       axiomBlock.classList.add("show");
     }, 400);
 
-    // 5) Cosmos erst nach 3 Sekunden
     setTimeout(() => {
       landingContainer.classList.add("space-active");
 
@@ -100,5 +77,30 @@ document.addEventListener("DOMContentLoaded", () => {
         window.CodexStarfield.start({ maskElement: sigillum });
       }
     }, 3000);
-  });
-});
+
+    setTimeout(() => {
+      ready = true;
+    }, INTRO_ZOOM_MS);
+  }
+
+  // Fullscreen: beim ersten Gesture „scharf schalten“,
+  // aber Intro NICHT automatisch starten – Intro startet nur auf Sigillum-Geste.
+  ensureFullscreenOnce();
+
+  // WICHTIG: pointerdown ist für Audio/Policies robuster als click
+  sigillumWrapper.addEventListener("pointerdown", (ev) => {
+    ev.preventDefault();
+
+    // 2. Klick -> Szene wechseln
+    if (ready) {
+      go("totum", { outEffect: "zoom-in", originEl: sigillum });
+      return;
+    }
+
+    // 1. Klick -> Intro starten
+    if (!activated) {
+      activated = true;
+      startIntroNow();
+    }
+  }, { passive: false });
+}
