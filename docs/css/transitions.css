@@ -1,0 +1,31 @@
+/* css/transitions.css */
+
+.transition-target {
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+body.is-transitioning {
+  pointer-events: none;
+}
+
+/* Prevent transform competition with the pulse during transitions */
+body.is-transitioning #sigillum-pulse {
+  animation-play-state: paused;
+}
+
+/* Zoom-IN: zoom into the target and fade out */
+.transition-target.is-zooming-in {
+  transition: transform 700ms cubic-bezier(.2,.8,.2,1),
+              opacity   700ms linear;
+  transform: scale(8);
+  opacity: 0;
+}
+
+/* Collapse-OUT: shrink to a point and fade out */
+.transition-target.is-collapsing-out {
+  transition: transform 650ms cubic-bezier(.2,.8,.2,1),
+              opacity   650ms linear;
+  transform: scale(0.02);
+  opacity: 0;
+}

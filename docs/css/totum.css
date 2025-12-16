@@ -84,12 +84,6 @@ body.totum {
     -webkit-user-drag: none;
 }
 
-/* Wenn die Relata keinerlei Interaktion brauchen: verhindert Fokus/Caret/Click vollständig */
-#relatum-left,
-#relatum-right {
-    pointer-events: none;
-}
-
 .gloss {
     position: absolute;
     left: 50%;

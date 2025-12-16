@@ -1,3 +1,6 @@
+// landing.js
+export const INTRO_ZOOM_MS = 15000;
+
 document.addEventListener("DOMContentLoaded", () => {
   const landingContainer = document.getElementById("landing-container");
 
