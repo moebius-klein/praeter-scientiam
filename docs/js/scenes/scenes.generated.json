@@ -35,8 +35,36 @@
     "content": [
       {
         "id": "possibilitas",
-        "text": "INTERFERENTIA cum RELATIONE SUI est!"
+        "text": "INTERFERENTIA cum RELATIONE sui est!"
       }
     ]
+  },
+  "totum": {
+    "class": "totum",
+    "ariaLabel": "TOTUM",
+    "satzblockAria": "Satz minus eins",
+    "satzHtml": "SATZ&nbsp;(&minus;1)",
+    "content": [
+      {
+        "id": "possibilitas",
+        "text": "POSSIBILITAS est!",
+        "ariaDescribedBy": "gloss-possibilitas",
+        "glossId": "gloss-possibilitas"
+      }
+    ],
+    "relata": {
+      "left": {
+        "id": "relatum-left",
+        "imgSrc": "img/sigillum/sigillum_relatum_totum.svg",
+        "imgAlt": "",
+        "ariaHidden": true
+      },
+      "right": {
+        "id": "relatum-right",
+        "imgSrc": "img/sigillum/sigillum_relatum_ohne_totum.svg",
+        "imgAlt": "",
+        "ariaHidden": true
+      }
+    }
   }
 }

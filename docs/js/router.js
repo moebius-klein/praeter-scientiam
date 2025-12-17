@@ -1,10 +1,11 @@
 import { playOut, playIn } from "./page_transition.js";
 import { ensureFullscreenOnce } from "./fullscreen.js";
 import { renderGeneratedScene } from "./scene_renderer.js";
+import { APP_CONFIG, applyAppConfig } from "./config.js";
 
 const SCENES = {
     landing: { url: "js/scenes/landing.html", module: "./scenes/landing_scene.js", bg: "stars" },
-    totum: { url: "js/scenes/totum.html", module: "./scenes/totum_scene.js", bg: "none" },
+    totum: { generated: true, module: "./scenes/totum_scene.js", bg: "none" },
 
     // generativ gerenderte, hochgradig deckungsgleiche Scenes
     "delta-min": { generated: true, module: "./scenes/delta-min_scene.js", bg: "none" },
@@ -58,5 +59,7 @@ window.addEventListener("popstate", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    applyAppConfig(APP_CONFIG);
+
     loadScene(sceneFromHash()).catch(() => { });
 });

@@ -31,6 +31,6 @@ body {
 /* φ-Minor: 1/φ ≈ 0.618; semantische Funktoren in Kleinbuchstaben */
 .minor {
   font-variant: small-caps;
-  font-size: 0.618em;
+  font-size: var(--phi-minor-scale, 0.618em);
   letter-spacing: 0.08em;
 }
