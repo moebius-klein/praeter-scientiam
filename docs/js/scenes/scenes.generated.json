@@ -1,0 +1,69 @@
+{
+  "delta-min": {
+    "main": {
+      "id": "scene",
+      "class": "delta-min",
+      "dataScene": "delta-min",
+      "ariaLabel": "Δmin"
+    },
+    "satzblock": {
+      "id": "satzblock",
+      "ariaLabel": "Satz null"
+    },
+    "satzHtml": "SATZ&nbsp;0",
+    "nodes": [
+      {
+        "tag": "div",
+        "id": "possibilitas",
+        "attrs": {
+          "aria-describedby": "gloss-possibilitas"
+        },
+        "html": "DIFFERENTIA EST!"
+      },
+      {
+        "tag": "div",
+        "id": "gloss-possibilitas",
+        "class": "gloss",
+        "attrs": {
+          "role": "tooltip",
+          "aria-hidden": "true"
+        },
+        "html": ""
+      }
+    ],
+    "relataImages": {
+      "left": {
+        "id": "relatum-left",
+        "ariaHidden": true,
+        "imgSrc": "img/sigillum/sigillum_relatum_delta-min.svg",
+        "imgAlt": ""
+      },
+      "right": {
+        "id": "relatum-right",
+        "ariaHidden": true,
+        "imgSrc": "img/sigillum/sigillum_relatum_ohne_delta-min.svg",
+        "imgAlt": ""
+      }
+    }
+  },
+  "delta-s": {
+    "main": {
+      "id": "scene",
+      "class": "delta-s",
+      "dataScene": "delta-s",
+      "ariaLabel": "Δs"
+    },
+    "satzblock": {
+      "id": "satzblock",
+      "ariaLabel": "Satz 1"
+    },
+    "satzHtml": "SATZ&nbsp;1",
+    "nodes": [
+      {
+        "tag": "div",
+        "id": "possibilitas",
+        "html": "INTERFERENTIA CVM RELATIONE SUI EST!"
+      }
+    ]
+  }
+}

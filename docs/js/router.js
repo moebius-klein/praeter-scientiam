@@ -4,8 +4,8 @@ import { ensureFullscreenOnce } from "./fullscreen.js";
 const SCENES = {
     landing: { url: "js/scenes/landing.html", module: "./scenes/landing_scene.js", bg: "stars" },
     totum: { url: "js/scenes/totum.html", module: "./scenes/totum_scene.js", bg: "none" },
-    "delta-min": { url: "js/scenes/delta-min.html", module: "./scenes/delta-min_scene.js", bg: "none" },
-    "delta-s": { url: "js/scenes/delta-s.html", module: "js/scenes/delta-s_scene.js", bg: "none" }
+    "delta-min": { generated: true, module: "./scenes/delta-min_scene.js", bg: "none" },
+    "delta-s": { generated: true, module: "./scenes/delta-s_scene.js", bg: "none" }
 };
 
 function setBackground(mode) {
@@ -22,7 +22,13 @@ async function loadScene(name) {
 
     setBackground(def.bg);
 
-    const html = await fetch(def.url, { cache: "no-store" }).then(r => r.text());
+    let html;
+    if (def.generated) {
+        const { renderScene } = await import("./scene_renderer.js");
+        html = await renderScene(name);
+    } else {
+        html = await fetch(def.url, { cache: "no-store" }).then(r => r.text());
+    }
     document.getElementById("app").innerHTML = html;
 
     // Importpfad relativ zu router.js (liegt in /js/)
