@@ -6,6 +6,11 @@ async function loadGeneratedScenes() {
   return _generatedCache;
 }
 
+export async function listGeneratedSceneIds() {
+  const data = await loadGeneratedScenes();
+  return Object.keys(data ?? {});
+}
+
 export async function getGeneratedSceneDef(name) {
   const data = await loadGeneratedScenes();
   // je nach Struktur: entweder data[name] oder data.scenes[name]
@@ -55,8 +60,13 @@ function renderRelatum(rel) {
   if (!rel?.id || !rel?.imgSrc) return "";
   const ariaHidden = rel.ariaHidden ? ' aria-hidden="true"' : "";
   const alt = rel.imgAlt ?? "";
+
+  // Optional navigation wiring (router binds [data-go])
+  const go = rel.go ? ` data-go="${esc(rel.go)}"` : "";
+  const out = rel.outEffect ? ` data-out-effect="${esc(rel.outEffect)}"` : "";
+
   return `
-    <div id="${esc(rel.id)}"${ariaHidden}>
+    <div id="${esc(rel.id)}"${ariaHidden}${go}${out}>
       <img src="${esc(rel.imgSrc)}" alt="${esc(alt)}">
     </div>
   `.trim();
