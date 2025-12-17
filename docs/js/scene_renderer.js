@@ -1,20 +1,21 @@
-// Generative Scene Renderer
-// Renders scenes from a JSON manifest into the shared DOM container (#app).
-// Keep this renderer conservative: escape text, allow explicit HTML only where intended
-// (e.g., &nbsp; in SATZ labels).
+// Generativer Scene-Renderer für einfache, hochgradig deckungsgleiche Scenes.
+// Lädt ein JSON-Manifest und rendert HTML anhand einer gemeinsamen Struktur.
+// Hinweis: Text wird escaped; SATZ erlaubt HTML-Entities (&nbsp; etc.), aber keine Tags.
 
-let _manifest = null;
+let _manifestPromise = null;
 
 async function loadManifest() {
-  if (_manifest) return _manifest;
-  const res = await fetch("js/scenes/scenes.generated.json", { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to load scene manifest: ${res.status}`);
-  _manifest = await res.json();
-  return _manifest;
+  if (_manifestPromise) return _manifestPromise;
+  _manifestPromise = fetch("js/scenes/scenes.generated.json", { cache: "no-store" })
+    .then(r => {
+      if (!r.ok) throw new Error(`Failed to load scenes.generated.json: ${r.status}`);
+      return r.json();
+    });
+  return _manifestPromise;
 }
 
-function escText(s) {
-  return String(s ?? "")
+function esc(s) {
+  return String(s)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -22,79 +23,56 @@ function escText(s) {
     .replaceAll("'", "&#39;");
 }
 
-// For specific fields we intentionally allow simple HTML entities (e.g., &nbsp;).
-// We still block raw tags by escaping < and >.
-function safeInlineHtml(s) {
-  return String(s ?? "")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
+// Erlaubt Entities, aber keine Tags. Minimale Sanitization für "SATZ&nbsp;0" etc.
+function allowEntitiesNoTags(s) {
+  const str = String(s ?? "");
+  return str.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 }
 
-function attrsToString(attrs = {}) {
-  const parts = [];
-  for (const [k, v] of Object.entries(attrs)) {
-    if (v === undefined || v === null) continue;
-    parts.push(`${k}="${escText(v)}"`);
-  }
-  return parts.length ? " " + parts.join(" ") : "";
-}
-
-function renderNode(n) {
-  const tag = n.tag ?? "div";
-  const id = n.id ? ` id="${escText(n.id)}"` : "";
-  const cls = n.class ? ` class="${escText(n.class)}"` : "";
-  const attrs = attrsToString(n.attrs);
-  const html = (n.html === undefined) ? "" : escText(n.html);
-  return `<${tag}${id}${cls}${attrs}>${html}</${tag}>`;
-}
-
-function renderRelataImages(relataImages) {
-  if (!relataImages) return "";
-  const mk = (side) => {
-    const r = relataImages[side];
-    if (!r) return "";
-    const aria = r.ariaHidden ? ' aria-hidden="true"' : "";
-    const imgAlt = escText(r.imgAlt ?? "");
-    const imgSrc = escText(r.imgSrc ?? "");
-    return `
-    <div id="${escText(r.id)}"${aria}>
-        <img src="${imgSrc}" alt="${imgAlt}">
-    </div>`.trim();
-  };
+function renderRelatum(rel) {
+  if (!rel?.id || !rel?.imgSrc) return "";
+  const ariaHidden = rel.ariaHidden ? ' aria-hidden="true"' : "";
+  const alt = rel.imgAlt ?? "";
   return `
-
-${mk("left")}
-
-${mk("right")}
-`;
+    <div id="${esc(rel.id)}"${ariaHidden}>
+      <img src="${esc(rel.imgSrc)}" alt="${esc(alt)}">
+    </div>
+  `.trim();
 }
 
-export async function renderScene(sceneId) {
+export async function renderGeneratedScene(sceneId) {
   const manifest = await loadManifest();
   const def = manifest[sceneId];
-  if (!def) throw new Error(`No manifest entry for scene: ${sceneId}`);
+  if (!def) throw new Error(`No generated scene definition for: ${sceneId}`);
 
-  const main = def.main ?? {};
-  const mainId = escText(main.id ?? "scene");
-  const mainClass = escText(main.class ?? "");
-  const dataScene = escText(main.dataScene ?? sceneId);
-  const ariaLabel = escText(main.ariaLabel ?? sceneId);
+  const contentBlocks = (def.content ?? []).map(block => {
+    const id = esc(block.id ?? "");
+    const text = esc(block.text ?? "");
+    const ariaDesc = block.ariaDescribedBy ? ` aria-describedby="${esc(block.ariaDescribedBy)}"` : "";
+    const gloss = block.glossId
+      ? `<div id="${esc(block.glossId)}" class="gloss" role="tooltip" aria-hidden="true"></div>`
+      : "";
+    return `
+      <div id="${id}"${ariaDesc}>
+        ${text}
+      </div>
+      ${gloss}
+    `.trim();
+  }).join("\n");
 
-  const sb = def.satzblock ?? {};
-  const sbId = escText(sb.id ?? "satzblock");
-  const sbAria = escText(sb.ariaLabel ?? "");
+  const relataLeft = def.relata?.left ? renderRelatum(def.relata.left) : "";
+  const relataRight = def.relata?.right ? renderRelatum(def.relata.right) : "";
 
-  const satzHtml = safeInlineHtml(def.satzHtml ?? "");
-  const nodesHtml = (def.nodes ?? []).map(renderNode).join("\n\n");
-  const relataHtml = renderRelataImages(def.relataImages);
+  const html = `
+    <main id="scene" class="${esc(def.class ?? "")}" data-scene="${esc(sceneId)}" aria-label="${esc(def.ariaLabel ?? sceneId)}">
+      <section id="satzblock" aria-label="${esc(def.satzblockAria ?? def.ariaLabel ?? sceneId)}">
+        <div id="satz">${allowEntitiesNoTags(def.satzHtml ?? "")}</div>
+        ${contentBlocks}
+      </section>
+      ${relataLeft}
+      ${relataRight}
+    </main>
+  `.trim();
 
-  return `
-<main id="${mainId}" class="${mainClass}" data-scene="${dataScene}" aria-label="${ariaLabel}">
-    <section id="${sbId}" aria-label="${sbAria}">
-        <div id="satz">${satzHtml}</div>
-
-${nodesHtml ? "        " + nodesHtml.replaceAll("\n", "\n        ") : ""}
-    </section>${relataHtml}
-</main>
-`.trim();
+  return html;
 }

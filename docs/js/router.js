@@ -1,9 +1,12 @@
 import { playOut, playIn } from "./page_transition.js";
 import { ensureFullscreenOnce } from "./fullscreen.js";
+import { renderGeneratedScene } from "./scene_renderer.js";
 
 const SCENES = {
     landing: { url: "js/scenes/landing.html", module: "./scenes/landing_scene.js", bg: "stars" },
     totum: { url: "js/scenes/totum.html", module: "./scenes/totum_scene.js", bg: "none" },
+
+    // generativ gerenderte, hochgradig deckungsgleiche Scenes
     "delta-min": { generated: true, module: "./scenes/delta-min_scene.js", bg: "none" },
     "delta-s": { generated: true, module: "./scenes/delta-s_scene.js", bg: "none" }
 };
@@ -24,8 +27,7 @@ async function loadScene(name) {
 
     let html;
     if (def.generated) {
-        const { renderScene } = await import("./scene_renderer.js");
-        html = await renderScene(name);
+        html = await renderGeneratedScene(name);
     } else {
         html = await fetch(def.url, { cache: "no-store" }).then(r => r.text());
     }
