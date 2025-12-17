@@ -82,9 +82,11 @@ body {
 }
 
 #satz {
-    color: var(--codex-gold-dim);
-    letter-spacing: 0.12em;
-    font-size: clamp(16px, 2.0vw, 22px);
+    color: rgba(216, 192, 136, 0.55);
+    /* dimmer als codex-gold-dim */
+    letter-spacing: 0.16em;
+    /* leicht mehr Distanz = Metadatum */
+    font-size: clamp(15px, 1.8vw, 20px);
     line-height: 1.1;
 }
 
@@ -94,7 +96,7 @@ body {
 #differentia,
 #propositio {
     color: var(--codex-gold);
-    letter-spacing: 0.10em;
+    letter-spacing: 0.14em;          /* vorher ~0.10em → jetzt bewusster */
     font-size: clamp(20px, 2.8vw, 34px);
     line-height: 1.15;
 }
