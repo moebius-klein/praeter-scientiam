@@ -1,7 +1,54 @@
 {
+  "landing": {
+    "layout": "landing",
+    "class": "landing",
+    "ariaLabel": "Landing",
+    "bgMode": "stars",
+    "center": {
+      "src": "img/sigillum/sigillum_codex_delta.svg",
+      "alt": "Sigillum Codex Δ",
+      "id": "sigillum",
+      "wrapperId": "sigillum-wrapper",
+      "pulseId": "sigillum-pulse"
+    },
+    "module": "./scenes/landing_scene.js"
+  },
+
+  "totum": {
+    "class": "totum",
+    "ariaLabel": "TOTUM",
+    "satzblockAria": "Satz minus eins",
+    "satzHtml": "SATZ&nbsp;(&minus;1)",
+    "content": [
+      {
+        "id": "possibilitas",
+        "text": "POSSIBILITAS est!",
+        "ariaDescribedBy": "gloss-possibilitas",
+        "glossId": "gloss-possibilitas"
+      }
+    ],
+    "relata": {
+      "left": {
+        "id": "relatum-left",
+        "imgSrc": "img/sigillum/sigillum_relatum_totum.svg",
+        "imgAlt": "",
+        "ariaHidden": true,
+        "go": "landing",
+        "outEffect": "collapse-out"
+      },
+      "right": {
+        "id": "relatum-right",
+        "imgSrc": "img/sigillum/sigillum_relatum_ohne_totum.svg",
+        "imgAlt": "",
+        "ariaHidden": true,
+        "go": "delta-min",
+        "outEffect": "zoom-in"
+      }
+    }
+  },
+
   "delta-min": {
     "class": "delta-min",
-    "bodyClass": "delta-min",
     "ariaLabel": "Δmin",
     "satzblockAria": "Satz null",
     "satzHtml": "SATZ&nbsp;0",
@@ -49,68 +96,17 @@
       }
     }
   },
+
   "delta-s": {
     "class": "delta-s",
-    "bodyClass": "delta-s",
     "ariaLabel": "Δs",
     "satzblockAria": "Satz 1",
     "satzHtml": "SATZ&nbsp;1",
     "content": [
       {
         "id": "possibilitas",
-        "text": "INTERFERENTIA cum RELATIONE SUI est!"
+        "text": "INTERFERENTIA cum RELATIONE sui est!"
       }
-    ],
-    "relata": {
-      "left": {
-        "id": "relatum-left",
-        "imgSrc": "img/sigillum/sigillum_relatum_delta-s.svg",
-        "imgAlt": "",
-        "ariaHidden": true,
-        "go": "delta-min",
-        "outEffect": "collapse-out"
-      },
-      "right": {
-        "id": "relatum-right",
-        "imgSrc": "img/sigillum/sigillum_relatum_ohne_delta-s.svg",
-        "imgAlt": "",
-        "ariaHidden": true,
-        "go": "totum",
-        "outEffect": "collapse-out"
-      }
-    }
-  },
-  "totum": {
-    "class": "totum",
-    "bodyClass": "totum",
-    "ariaLabel": "TOTUM",
-    "satzblockAria": "Satz minus eins",
-    "satzHtml": "SATZ&nbsp;(&minus;1)",
-    "content": [
-      {
-        "id": "possibilitas",
-        "text": "POSSIBILITAS est!",
-        "ariaDescribedBy": "gloss-possibilitas",
-        "glossId": "gloss-possibilitas"
-      }
-    ],
-    "relata": {
-      "left": {
-        "id": "relatum-left",
-        "imgSrc": "img/sigillum/sigillum_relatum_totum.svg",
-        "imgAlt": "",
-        "ariaHidden": true,
-        "go": "landing",
-        "outEffect": "collapse-out"
-      },
-      "right": {
-        "id": "relatum-right",
-        "imgSrc": "img/sigillum/sigillum_relatum_ohne_totum.svg",
-        "imgAlt": "",
-        "ariaHidden": true,
-        "go": "delta-min",
-        "outEffect": "zoom-in"
-      }
-    }
+    ]
   }
 }

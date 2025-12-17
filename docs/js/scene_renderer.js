@@ -6,15 +6,17 @@ async function loadGeneratedScenes() {
   return _generatedCache;
 }
 
-export async function listGeneratedSceneIds() {
-  const data = await loadGeneratedScenes();
-  return Object.keys(data ?? {});
-}
-
 export async function getGeneratedSceneDef(name) {
   const data = await loadGeneratedScenes();
   // je nach Struktur: entweder data[name] oder data.scenes[name]
   return data[name] ?? data.scenes?.[name] ?? null;
+}
+
+export async function listGeneratedSceneIds() {
+  const data = await loadGeneratedScenes();
+  // Accept both {id:{...}} and {scenes:{id:{...}}} shapes
+  const obj = data.scenes ?? data;
+  return Object.keys(obj || {});
 }
 
 // Generativer Scene-Renderer für einfache, hochgradig deckungsgleiche Scenes.
@@ -60,13 +62,10 @@ function renderRelatum(rel) {
   if (!rel?.id || !rel?.imgSrc) return "";
   const ariaHidden = rel.ariaHidden ? ' aria-hidden="true"' : "";
   const alt = rel.imgAlt ?? "";
-
-  // Optional navigation wiring (router binds [data-go])
   const go = rel.go ? ` data-go="${esc(rel.go)}"` : "";
-  const out = rel.outEffect ? ` data-out-effect="${esc(rel.outEffect)}"` : "";
-
+  const outFx = rel.outEffect ? ` data-out-effect="${esc(rel.outEffect)}"` : "";
   return `
-    <div id="${esc(rel.id)}"${ariaHidden}${go}${out}>
+    <div id="${esc(rel.id)}"${ariaHidden}${go}${outFx}>
       <img src="${esc(rel.imgSrc)}" alt="${esc(alt)}">
     </div>
   `.trim();
@@ -74,8 +73,29 @@ function renderRelatum(rel) {
 
 export async function renderGeneratedScene(sceneId) {
   const manifest = await loadManifest();
-  const def = manifest[sceneId];
+  const def = (manifest.scenes ?? manifest)[sceneId];
   if (!def) throw new Error(`No generated scene definition for: ${sceneId}`);
+
+  // Layout: landing (center sigillum, no satzblock, no relata)
+  if (def.layout === "landing") {
+    const src = def.center?.src ?? "img/sigillum/sigillum_codex_delta.svg";
+    const alt = def.center?.alt ?? "Sigillum Codex Δ";
+    const sigillumId = def.center?.id ?? "sigillum";
+    const wrapperId = def.center?.wrapperId ?? "sigillum-wrapper";
+    const pulseId = def.center?.pulseId ?? "sigillum-pulse";
+
+    return `
+      <main id="scene" class="${esc(def.class ?? "")}" data-scene="${esc(sceneId)}" aria-label="${esc(def.ariaLabel ?? sceneId)}">
+        <div id="landing-container">
+          <div id="${esc(wrapperId)}">
+            <div id="${esc(pulseId)}">
+              <img id="${esc(sigillumId)}" src="${esc(src)}" alt="${esc(alt)}">
+            </div>
+          </div>
+        </div>
+      </main>
+    `.trim();
+  }
 
   const contentBlocks = (def.content ?? []).map(block => {
     const id = esc(block.id ?? "");
