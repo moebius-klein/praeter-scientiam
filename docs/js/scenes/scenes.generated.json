@@ -7,7 +7,7 @@
     "content": [
       {
         "id": "possibilitas",
-        "text": "DIFFERENTIA EST!",
+        "text": "DIFFERENTIA est!",
         "ariaDescribedBy": "gloss-possibilitas",
         "glossId": "gloss-possibilitas"
       }
@@ -35,7 +35,7 @@
     "content": [
       {
         "id": "possibilitas",
-        "text": "INTERFERENTIA CVM RELATIONE SUI EST!"
+        "text": "INTERFERENTIA cum RELATIONE SUI est!"
       }
     ]
   }

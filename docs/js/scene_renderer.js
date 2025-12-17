@@ -23,6 +23,14 @@ function esc(s) {
     .replaceAll("'", "&#39;");
 }
 
+
+
+// Strenge φ-Minor-Regel: Nur reine Kleinbuchstaben-Wörter [a-z]+ werden als Minor gesetzt.
+// Damit sind z. B. "cum", "sui", "est" minor; "Cum", "EST", "cvm" (falls groß) nicht.
+function renderPhiMinor(text) {
+  const safe = esc(text ?? "");
+  return safe.replace(/\b([a-z]+)\b/g, '<span class="minor">$1</span>');
+}
 // Erlaubt Entities, aber keine Tags. Minimale Sanitization für "SATZ&nbsp;0" etc.
 function allowEntitiesNoTags(s) {
   const str = String(s ?? "");
@@ -47,7 +55,7 @@ export async function renderGeneratedScene(sceneId) {
 
   const contentBlocks = (def.content ?? []).map(block => {
     const id = esc(block.id ?? "");
-    const text = esc(block.text ?? "");
+    const text = renderPhiMinor(block.text ?? "");
     const ariaDesc = block.ariaDescribedBy ? ` aria-describedby="${esc(block.ariaDescribedBy)}"` : "";
     const gloss = block.glossId
       ? `<div id="${esc(block.glossId)}" class="gloss" role="tooltip" aria-hidden="true"></div>`
