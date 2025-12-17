@@ -25,6 +25,23 @@
         "imgAlt": "",
         "ariaHidden": true
       }
+    },
+    "bg": {
+      "module": "bg/delta_min_bg.js",
+      "params": {
+        "maxGlyphs": 60,
+        "spawnPerSec": 6,
+        "minLifeMs": 220,
+        "maxLifeMs": 6500,
+        "paddingPx": 30,
+        "useDeltaM": true,
+        "minSize": 10,
+        "maxSize": 32,
+        "minStroke": 1,
+        "maxStroke": 2.2,
+        "color": "rgba(212, 180, 120, 0.30)",
+        "bgZ": 5
+      }
     }
   },
   "delta-s": {

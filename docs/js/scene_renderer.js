@@ -1,3 +1,17 @@
+let _generatedCache = null;
+
+async function loadGeneratedScenes() {
+  if (_generatedCache) return _generatedCache;
+  _generatedCache = await fetch("js/scenes/scenes.generated.json", { cache: "no-store" }).then(r => r.json());
+  return _generatedCache;
+}
+
+export async function getGeneratedSceneDef(name) {
+  const data = await loadGeneratedScenes();
+  // je nach Struktur: entweder data[name] oder data.scenes[name]
+  return data[name] ?? data.scenes?.[name] ?? null;
+}
+
 // Generativer Scene-Renderer für einfache, hochgradig deckungsgleiche Scenes.
 // Lädt ein JSON-Manifest und rendert HTML anhand einer gemeinsamen Struktur.
 // Hinweis: Text wird escaped; SATZ erlaubt HTML-Entities (&nbsp; etc.), aber keine Tags.
