@@ -4,7 +4,8 @@ import { ensureFullscreenOnce } from "./fullscreen.js";
 const SCENES = {
     landing: { url: "js/scenes/landing.html", module: "./scenes/landing_scene.js", bg: "stars" },
     totum: { url: "js/scenes/totum.html", module: "./scenes/totum_scene.js", bg: "none" },
-    "delta-min": { url: "js/scenes/delta-min.html", module: "./scenes/delta-min_scene.js", bg: "none" }
+    "delta-min": { url: "js/scenes/delta-min.html", module: "./scenes/delta-min_scene.js", bg: "none" },
+    "delta-s": { url: "js/scenes/delta-s.html", module: "js/scenes/delta-s_scene.js", bg: "none" }
 };
 
 function setBackground(mode) {
