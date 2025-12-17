@@ -13,24 +13,281 @@
     --codex-gold: #d8c088;
     --codex-gold-dim: #a89670;
     --gold-nebula: rgba(212, 180, 120, 0.08);
+
+    /* φ-Minor scale (default 1/φ ≈ 0.618); can be overridden via JS */
+    --phi-minor-scale: 0.6180339887;
+
+    /* Safe-area padding for mobile */
+    --safe-pad-x: max(16px, env(safe-area-inset-left));
+    --safe-pad-y: max(16px, env(safe-area-inset-top));
+    --safe-pad-b: max(16px, env(safe-area-inset-bottom));
 }
 
-/* ===== FONTS ===== */
+/* ===== GLOBAL ===== */
+html,
+body {
+    height: 100%;
+}
+
 body {
     /* If Cinzel can't be loaded, fall back to common serif faces */
     font-family: "Cinzel", "Times New Roman", Times, serif;
     color: var(--codex-gold);
+
     background: radial-gradient(circle at center,
-                var(--purple-haze-2) 0%,
-                var(--purple-haze) 45%,
-                var(--umbra-deep) 100%);
+            var(--purple-haze-2) 0%,
+            var(--purple-haze) 45%,
+            var(--umbra-deep) 100%);
+
     overflow: hidden;
+
+    /* reduce accidental selection / mobile tap glow */
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    /* improves text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Root app container (if present) */
+#app {
+    position: relative;
+    min-height: 100svh;
+    width: 100%;
+}
 
-/* φ-Minor: 1/φ ≈ 0.618; semantische Funktoren in Kleinbuchstaben */
+/* ===== SCENE LAYOUT (canonical for delta-min / delta-s / totum) ===== */
+#scene {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+
+    display: grid;
+    place-items: center;
+
+    padding: var(--safe-pad-y) var(--safe-pad-x);
+}
+
+#satzblock {
+    position: relative;
+    width: min(92vw, 900px);
+    text-align: center;
+
+    display: grid;
+    gap: 14px;
+
+    padding: 12px 10px;
+}
+
+#satz {
+    color: var(--codex-gold-dim);
+    letter-spacing: 0.12em;
+    font-size: clamp(16px, 2.0vw, 22px);
+    line-height: 1.1;
+}
+
+/* Common proposition line ids (support multiple scenes) */
+#possibilitas,
+#interferentia,
+#differentia,
+#propositio {
+    color: var(--codex-gold);
+    letter-spacing: 0.10em;
+    font-size: clamp(20px, 2.8vw, 34px);
+    line-height: 1.15;
+}
+
+/* Optional gloss tooltip placeholder */
+.gloss {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ===== φ-Minor: semantische Funktoren in Kleinbuchstaben ===== */
 .minor {
-  font-variant: small-caps;
-  font-size: var(--phi-minor-scale, 0.618em);
-  letter-spacing: 0.08em;
+    font-variant: small-caps;
+    font-size: var(--phi-minor-scale, 0.618em);
+    letter-spacing: 0.08em;
+}
+
+/* ===== RELATA (left/right) ===== */
+/* Supports both old id-based and class-based markup */
+#relatum-left,
+#relatum-right,
+.relatum.left,
+.relatum.right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: grid;
+    place-items: center;
+    gap: 10px;
+
+    padding: 8px 10px;
+
+    background: transparent;
+    border: 0;
+    color: var(--codex-gold);
+
+    cursor: pointer;
+
+    /* better tap target */
+    min-width: 72px;
+    min-height: 72px;
+}
+
+/* Left / Right placement */
+#relatum-left,
+.relatum.left {
+    left: var(--safe-pad-x);
+}
+
+#relatum-right,
+.relatum.right {
+    right: var(--safe-pad-x);
+}
+
+/* ===== RELATA: canonical sizing (stable across different SVG viewBoxes) ===== */
+:root {
+    --relatum-size: 56px;
+    /* start value; adjust once, applies everywhere */
+    --relatum-hitbox: 84px;
+    /* tap target */
+    --relatum-shadow: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
+}
+
+#relatum-left,
+#relatum-right,
+.relatum.left,
+.relatum.right {
+    min-width: var(--relatum-hitbox);
+    min-height: var(--relatum-hitbox);
+}
+
+/* Apply sizing to ANY img inside relata, regardless of markup */
+#relatum-left img,
+#relatum-right img,
+.relatum.left img,
+.relatum.right img,
+.relatum-sigil {
+    width: var(--relatum-size) !important;
+    height: var(--relatum-size) !important;
+    object-fit: contain;
+    display: block;
+    filter: var(--relatum-shadow);
+}
+
+@media (max-width: 640px) {
+    :root {
+        --relatum-size: 48px;
+        --relatum-hitbox: 76px;
+    }
+}
+
+/* Optional label under sigil */
+.relatum-label,
+#relatum-left .label,
+#relatum-right .label {
+    letter-spacing: 0.12em;
+    font-size: clamp(10px, 1.4vw, 14px);
+    color: var(--codex-gold-dim);
+    text-transform: uppercase;
+}
+
+/* Focus ring only when keyboard navigation is used */
+:focus-visible {
+    outline: 2px solid rgba(216, 192, 136, 0.70);
+    outline-offset: 4px;
+    border-radius: 10px;
+}
+
+/* ===== MOBILE: move relata to bottom corners to avoid overlapping text ===== */
+@media (max-width: 640px) {
+    #satzblock {
+        width: min(96vw, 900px);
+        gap: 12px;
+    }
+
+    #relatum-left,
+    #relatum-right,
+    .relatum.left,
+    .relatum.right {
+        top: auto;
+        bottom: var(--safe-pad-b);
+        transform: none;
+    }
+}
+
+/* ===== Motion preference ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================================
+   RELATA — canonical placement/sizing (restores old scene CSS behavior)
+   Put this at the END of base.css so it overrides earlier rules.
+   ============================================================ */
+
+:root {
+    --relatum-inset: clamp(12px, 3vw, 48px);
+    --relatum-size: clamp(44px, 18vw, 320px);
+}
+
+/* Make relata containers fixed to viewport corners */
+#relatum-left,
+#relatum-right,
+.relatum.left,
+.relatum.right {
+    position: fixed !important;
+    z-index: 20;
+    pointer-events: auto;
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Left = top-left */
+#relatum-left,
+.relatum.left {
+    left: var(--relatum-inset) !important;
+    top: var(--relatum-inset) !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+}
+
+/* Right = bottom-right */
+#relatum-right,
+.relatum.right {
+    right: var(--relatum-inset) !important;
+    bottom: var(--relatum-inset) !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+}
+
+/* Size any image inside relata (works for <img> and for your class variant) */
+#relatum-left img,
+#relatum-right img,
+.relatum.left img,
+.relatum.right img,
+.relatum-sigil {
+    width: var(--relatum-size) !important;
+    height: auto !important;
+
+    /* click should hit the container, not the image */
+    pointer-events: none;
+    -webkit-user-drag: none;
+
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
 }
