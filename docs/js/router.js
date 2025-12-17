@@ -22,19 +22,36 @@ function setStarfieldVisible(visible) {
 }
 
 async function applySceneBackground(sceneDef) {
-  // stop previous background
+  // 1) stop previous custom background
   if (bgController?.stop) {
     try { bgController.stop(); } catch (_) { }
   }
   bgController = null;
 
-  const bg = sceneDef?.bg;
-  if (!bg || !bg.module) return;
+  // 2) failsafe: remove any leftover bg layers (custom canvases etc.)
+  document.querySelectorAll(".bg-layer").forEach(el => el.remove());
 
-  // bg.module is given as "bg/xxx.js" (relative to /js/)
-  const mod = await import(`./${bg.module}`);
-  if (typeof mod.start !== "function") return;
-  bgController = mod.start({ params: bg.params ?? {} });
+  // 3) normalize bg definition:
+  //    - allow legacy string ("stars"/"none")
+  //    - allow object { module, params }
+  const bg = sceneDef?.bg ?? "none";
+
+  // 4) starfield handling
+  const bgKey = (typeof bg === "string") ? bg : (bg?.key ?? "none");
+
+  if (bgKey === "stars") {
+    setStarfieldVisible(true);
+    return;
+  }
+  setStarfieldVisible(false);
+
+  // 5) custom background module handling
+  if (typeof bg === "object" && bg?.module) {
+    const mod = await import("./" + bg.module);
+    if (typeof mod.start === "function") {
+      bgController = mod.start({ params: bg.params ?? {} });
+    }
+  }
 }
 
 function applyBodyClass(sceneDef) {
