@@ -13,7 +13,6 @@
     },
     "module": "./scenes/landing_scene.js"
   },
-
   "totum": {
     "class": "totum",
     "ariaLabel": "TOTUM",
@@ -46,7 +45,6 @@
       }
     }
   },
-
   "delta-min": {
     "class": "delta-min",
     "ariaLabel": "Δmin",
@@ -96,7 +94,6 @@
       }
     }
   },
-
   "delta-s": {
     "class": "delta-s",
     "ariaLabel": "Δs",
@@ -105,8 +102,45 @@
     "content": [
       {
         "id": "possibilitas",
-        "text": "INTERFERENTIA cum RELATIONE SUI est!"
+        "text": "RELATIO cum SE IPSA est!"
       }
-    ]
+    ],
+    "relata": {
+      "left": {
+        "id": "relatum-left",
+        "imgSrc": "img/sigillum/sigillum_relatum_delta-s.svg",
+        "imgAlt": "",
+        "ariaHidden": true,
+        "go": "delta-min",
+        "outEffect": "collapse-out"
+      },
+      "right-paused": {
+        "id": "relatum-right",
+        "imgSrc": "img/sigillum/sigillum_relatum_ohne_delta-s.svg",
+        "imgAlt": "",
+        "ariaHidden": true,
+        "go": "delta-min",
+        "outEffect": "zoom-in"
+      }
+    },
+    "bg": {
+      "module": "bg/delta_s_bg.js",
+      "params": {
+        "triangleCount": 28,
+        "minRadius": 70,
+        "maxRadius": 190,
+        "wobble": 7,
+        "wobbleSteps": 12,
+        "minStroke": 0.9,
+        "maxStroke": 1.6,
+        "selfRelationChance": 1.0,
+        "arrowMinBend": 10,
+        "arrowMaxBend": 26,
+        "colorPrimary": "rgba(184,155,60,0.28)",
+        "colorSecondary": "rgba(160,120,210,0.18)",
+        "veilAlpha": 0.10,
+        "bgZ": 5
+      }
+    }
   }
 }

@@ -14,6 +14,10 @@ import { APP_CONFIG, applyAppConfig } from "./config.js";
 
 let bgController = null;
 
+// Navigation serialization (prevents flooding / re-entrancy)
+let isNavigating = false;
+let currentScene = null;
+
 function setStarfieldVisible(visible) {
   const star = document.getElementById("starfield-canvas");
   const neb = document.getElementById("nebula-canvas");
@@ -57,42 +61,45 @@ async function applySceneBackground(sceneDef) {
 function applyBodyClass(sceneDef) {
   // Normalize: use explicit bodyClass if present, else def.class.
   const cls = sceneDef?.bodyClass ?? sceneDef?.class ?? "";
-  document.body.classList.remove(
-    "landing",
-    "totum",
-    "delta-min",
-    "delta-s"
-  );
+  document.body.classList.remove("landing", "totum", "delta-min", "delta-s");
   if (cls) document.body.classList.add(cls);
 }
 
 function wireGenericNav(rootEl) {
-  // Generic click routing for elements that declare data-go.
-  // Example: <div id="relatum-left" data-go="totum" data-out-effect="collapse-out"></div>
-  const handler = (ev) => {
+  // IMPORTANT: rootEl is stable (#app). We must NOT add listeners on every scene load.
+  if (!rootEl || rootEl.dataset.navWired === "1") return;
+  rootEl.dataset.navWired = "1";
+
+  // Optional: prevent pointerdown + click double-fire by suppressing click shortly after pointerdown.
+  let lastPointerNavAt = 0;
+
+  const runNav = (ev) => {
     const el = ev.target.closest?.("[data-go]");
     if (!el) return;
 
-    ev.preventDefault();
-    const target = el.getAttribute("data-go");
-    if (!target) return;
-    const outEffect = el.getAttribute("data-out-effect") || "zoom-in";
-    go(target, { outEffect, originEl: el });
-  };
-
-  rootEl.addEventListener("click", handler);
-  rootEl.addEventListener("pointerdown", (ev) => {
-    // Some mobile browsers are more reliable with pointerdown for user-gesture policies.
-    const el = ev.target.closest?.("[data-go]");
-    if (!el) return;
     // Let explicit handlers (e.g., landing hook) take precedence.
     if (el.hasAttribute("data-go-external")) return;
+
     ev.preventDefault();
+
     const target = el.getAttribute("data-go");
     if (!target) return;
+
     const outEffect = el.getAttribute("data-out-effect") || "zoom-in";
-    go(target, { outEffect, originEl: el });
+    go(target, { outEffect, originEl: el }).catch(() => { });
+  };
+
+  rootEl.addEventListener("pointerdown", (ev) => {
+    // Some mobile browsers are more reliable with pointerdown for user-gesture policies.
+    lastPointerNavAt = Date.now();
+    runNav(ev);
   }, { passive: false });
+
+  rootEl.addEventListener("click", (ev) => {
+    // Suppress click if pointerdown already initiated navigation very recently.
+    if (Date.now() - lastPointerNavAt < 600) return;
+    runNav(ev);
+  });
 }
 
 async function loadScene(sceneId) {
@@ -113,7 +120,7 @@ async function loadScene(sceneId) {
   // Scene-specific background plugin (glyphs etc.)
   await applySceneBackground(sceneDef);
 
-  // Generic nav wiring
+  // Generic nav wiring (idempotent; binds only once)
   wireGenericNav(app);
 
   // Optional scene hooks
@@ -124,13 +131,54 @@ async function loadScene(sceneId) {
     }
   }
 
+  // playIn might be sync or async; keep as-is unless your implementation returns a Promise.
   playIn();
 }
 
-export async function go(sceneId, { outEffect = "zoom-in", originEl = null } = {}) {
-  await playOut(outEffect, originEl);
-  history.pushState({ scene: sceneId }, "", `#${sceneId}`);
-  await loadScene(sceneId);
+export async function go(
+  sceneId,
+  { outEffect = "zoom-in", originEl = null, fromPopState = false } = {}
+) {
+  if (!sceneId) return;
+
+  // Prevent re-entrancy / flooding
+  if (isNavigating) {
+    console.warn("Navigation suppressed (busy):", sceneId);
+    return;
+  }
+
+  // Prevent no-op reload loops
+  if (sceneId === currentScene) {
+    if (!fromPopState && location.hash !== `#${sceneId}`) {
+      history.replaceState({ scene: sceneId }, "", `#${sceneId}`);
+    }
+    return;
+  }
+
+  isNavigating = true;
+  document.body.classList.add("is-transitioning");
+
+  try {
+    await playOut(outEffect, originEl);
+
+    // Only pushState on user-initiated navigation (not on popstate)
+    if (!fromPopState) {
+      history.pushState({ scene: sceneId }, "", `#${sceneId}`);
+    } else {
+      // Keep history.state coherent (some browsers may provide null state)
+      if (!history.state || history.state.scene !== sceneId) {
+        history.replaceState({ scene: sceneId }, "", `#${sceneId}`);
+      }
+    }
+
+    await loadScene(sceneId);
+    currentScene = sceneId;
+  } catch (e) {
+    console.error("Navigation failed:", e);
+  } finally {
+    document.body.classList.remove("is-transitioning");
+    isNavigating = false;
+  }
 }
 
 function sceneFromHash(validIds) {
@@ -148,8 +196,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const valid = new Set(ids);
 
   window.addEventListener("popstate", () => {
-    loadScene(sceneFromHash(valid)).catch(() => { });
+    const target = sceneFromHash(valid);
+    go(target, { outEffect: "zoom-in", originEl: null, fromPopState: true }).catch(() => { });
   });
 
-  loadScene(sceneFromHash(valid)).catch(() => { });
+  const initial = sceneFromHash(valid);
+  history.replaceState({ scene: initial }, "", `#${initial}`);
+  go(initial, { outEffect: "zoom-in", originEl: null, fromPopState: true }).catch(() => { });
 });
